@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Technical Blog - Posts</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link
+    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <!-- Navbar would be added by the navbar-footer.js -->
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>JavaScript Event listeners</h1>
+            <h2 class="subheading">A few simple words about event listeners on example of “Coloured Blocks” Assignment.
+            </h2>
+            <span class="meta">Posted by Anton Talalaev on November 29, 2020</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+          <p> In today’s post, I would like to give a short overview of JavaScript event listeners and one of the
+            projects that I made during the course JavaScript Basics by Manitoba Institute of Trades and Technology
+            (MITT). The project was called “Coloured Blocks”. </p>
+
+          <h2 class="section-heading">Description of the Project</h2>
+
+          <p>The “Coloured Blocks” project represents a web page with a table of blocks. Blocks can be dynamically
+            colored in random colors when you click it one by one, or you can use a color picker to choose a color by
+            yourself. </p>
+
+
+
+          <div class="img-container">
+            <img id="img_event_listeners_1" class="img-fluid" src="/img/posts/post_6-event_listeners-1.jpg" alt="">
+            <blockquote class="caption text-muted">
+              <label for="img_event_listeners_1">“Coloured Blocks” Assignment, Basics of JavaScript, Software Developer
+                program by MITT, 2020</label>
+            </blockquote>
+          </div>
+
+          <ol>
+            <li> The left screenshot shows you the fresh-downloaded application. </li>
+            <li> The right one shows the page after each block was ‘clicked’. </li>
+          </ol>
+
+          <p> The main focus of the project was to use one of the most important JavaScript web-technologies - event
+            listeners. So, in this article, I will focus on JavaScript and event listeners. </p>
+
+
+          <h2 class="section-heading">Event listeners</h2>
+          <p> Event listeners in JavaScript are special objects that can “listen” browsers events e.i. clicking the
+            button, mouse moving, etc. You can use event listeners to add any dynamic functionality to the page. Event
+            listeners “listen” to the special events and when the event is invoked (or “emitted”), the piece of code
+            related to this event will be run. </p>
+
+
+          <div class="img-container">
+            <img id="img_event_listeners_2" class="img-fluid" src="/img/posts/post_6-event_listeners-2.png" alt="">
+            <blockquote class="caption text-muted">
+              <label for="img_event_listeners_2">This diagram shows the basic principle of work JavaScript event
+                listeners.</label>
+            </blockquote>
+          </div>
+
+          <p> Basically, any event listener works as a simple if-statement. </p>
+
+          <p> If-statement structure: </p>
+
+          <div class="code-container ">
+            <p> <code>if</code> (<span class="code-light">condition</span>) </p>
+            <p class="code-left-shift-1"> <span class="code-comment">// code to run when the condition is <i>true</i>
+              </span></p>
+            <p> } </p>
+          </div>
+
+          <p> Event listener structure: </p>
+
+          <div class="code-container ">
+            <p> <code>element</code>.<span class="code-light">addEventListener</span> (<span
+                class="code-attribute">'click'</span> <code>function</code>
+              (<span class="code-light">event</span>) { </p>
+            <p class="code-left-shift-1"> <span class="code-comment">// code to run when particular element of the page
+                is <i>clicked</i> </span></p>
+            <p> }); </p>
+          </div>
+
+          <h2 class="section-heading">Possible solution</h2>
+          <p> The “Coloured Blocks” project, as any other coding task, can be solved in many ways. The main part of the
+            project was changing the color of blocks. In order to do so, you can create event listeners for each block.
+            In the current task, there were only 20 blocks on the page. It’s not much. But what if you will have 100
+            blocks? Or 1000? In this case, you already can’t afford to create an event listener for each block. You will
+            need to find another solution. </p>
+
+          <h2 class="section-heading">Event bubbling</h2>
+          <p> I will not tell you much about the event bubbling, but I will try to deliver the main thought of such a
+            principle in simple words. Each element on the page can contain other elements. In the case of the “Coloured
+            Blocks” project, you can find that blocks elements are contained in the table element. </p>
+
+          <div class="img-container">
+            <img id="img_event_listeners_3" class="img-fluid" src="/img/posts/post_6-event_listeners-3.jpg" alt="">
+            <blockquote class="caption text-muted">
+              <label for="img_event_listeners_3">This diagram shows the basics of event bubbling principle.</label>
+            </blockquote>
+          </div>
+
+          <p> On this diagram, you can see that the ‘click’ event was made under the block. But the block itself is
+            located inside the table. It means that any event that happened with blocks happened inside the table and
+            can be ‘heard’ by the table event listener. </p>
+          <p> Now, instead of creating event listeners for each block, you can create one event listener only for the
+            table element. All events that happen with elements inside the table element also happen with the table
+            element. </p>
+          <p> Let's look at code example of such event listener: </p>
+
+          <div class="code-container ">
+            <p> <code>tableElement</code>.<span class="code-light">addEventListener</span> (<span
+                class="code-attribute">'click'</span> <code>function</code>
+              (<span class="code-light">event</span>) { </p>
+            <p class="code-left-shift-2"> <code>if</code>
+              (<span class="code-light">event</span>.<code>target</code>.<span class="code-light">tagName</span>
+              === <span class="code-attribute">'DIV'</span>)
+              {</p>
+            <p class="code-left-shift-3"> <code>bgChangeFunction</code>(<span class="code-light">event</span>.<code>target</code>)</p>
+            <p class="code-left-shift-2">}</p>
+            <p> }); </p>
+          </div>
+
+          <p>
+          <ul>
+            <li> <i> tableElement</i> - table element. </li>
+            <li> <i> addEventListener()</i> - function that adds event listeners to the particular element (in this case
+              to the table element). </li>
+            <li> <i> ‘click’</i> - a type of event that a new event listener will “listen”. </li>
+            <li> <i> function (event) { … }</i> - peace of code that will run when an event will happen. </li>
+            <li> <i> if (event.target.tagName === 'DIV') { … }</i> - here I check if actually clicked one of the
+              blocks (all blocks are ‘DIV’ elements). </li>
+            <li> <i> bgChange(event.target)</i> - will call the function that will change the background color of the
+              element. </li>
+          </ul>
+          </p>
+
+          <h2 class="section-heading">As a conclusion</h2>
+          <p> “Coloured Blocks” project was a very good project to understand how to use JavaScript event listeners in a
+            more efficient way. Event listeners are an extremely important technology for the modern Internet. Using
+            event listeners you can add to your web resource any dynamic functionality that you want. Modern frameworks
+            use event listeners to create dropdowns, dynamic menus, chat popups, games, etc. </p>
+
+          <p>Placeholder text by
+            <a href="#">Anton Talalaev</a>. Header image by
+            <a href="#">Canva(need full name of the servise) (link to the image/author)</a>.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <!-- Footer would be added by the navbar-footer.js -->
+
+</body>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Adds navbar and footer -->
+<script src="js/navbar-footer.js"></script>
+
+</html>
