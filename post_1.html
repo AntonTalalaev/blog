@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Technical Blog - Posts</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
+    type='text/css'>
+  <link
+    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Anton Talalaev</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/posts.html">Posts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/posts/post_1-SSL-main.png')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Online security </h1>
+            <h2 class="subheading">What is SSL and TLS <br>
+              What differences between HTTP and HTTPS </h2>
+            <span class="meta">Posted by Anton Talalaev on November 22, 2020</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>Nowadays, online fraud such as credit card fraud, account takeover, promo abuse, etc. began more and more
+            popular. Here I will cover web security-related topic that definitely will be useful to know about. </p>
+
+          <p>Probably you wondered, why do sites with <code>http://</code> in the address (URL) cause an unsafe
+            connection alert in
+            the browser, as opposed to sites with <code>https://</code> in the address? </p>
+
+          <p>In simple terms, the absence of ‘s’ in <code>http://</code> means that the site you visit <strong>cannot
+              guarantee the safety of
+              your data transmitted to the site</strong>. The <code>https://</code> in the address of the site indicates
+            that data transmission
+            between the user (client) and the site (server) is carried out using a <i>secure encryption protocol</i>.
+          </p>
+
+          <p>In order to understand this issue, I propose to dig a bit dipper. </p>
+
+          <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP">Hypertext Transfer Protocol (HTTP)</a> - the
+            basic protocol for transferring data between a user (client) and a
+            web-site (server). HTTP describes things like request and response, sessions, cache, authentication, and
+            more. </p>
+
+          <p>Using HTTP, data is sent between network users in <i>plain text</i>, allowing users to see the content.
+            However,
+            having intercepted such data, the attacker does not have any difficulties in interpreting it. This raises a
+            security issue. So, in 1994 Netscape Communications developed and introduced HTTP Secure (HTTPS), which
+            allows a client and server to <strong>first establish an encrypted connection and then send HTTP messages
+              over it</strong>.
+            HTTPS is not a separate protocol. This is normal HTTP, that works over <a
+              href="https://en.wikipedia.org/wiki/Transport_Layer_Security">
+              SSL (Secure Sockets Layer) and TLS (Transport Layer Security)</a> encrypted transport mechanisms. </p>
+
+          <h2 class="section-heading">Differences between SSL and TLS </h2>
+
+          <p><strong>SSL is a cryptographic protocol for secure communication.</strong> Since version 3.0 SSL has been
+            replaced by TLS,
+            but the name of the previous version stuck, therefore today SSL is most often referred to as TLS. Today, TLS
+            and SSL technologies are used to guarantee encryption of traffic between client and a server. </p>
+
+          <h2 class="section-heading">How does it all work?</h2>
+
+          <p>The principle of SSL and TLS is the same. On top of the data transfer protocol, an encrypted channel is
+            established, within which data is transferred using the HTTP protocol. <strong>Only the machine that
+              established the
+              connections can decrypt the transmitted data</strong>. For everyone else who receives the transmitted
+            packets (e.g.
+            intruders), this information will be meaningless if they cannot decrypt it. </p>
+
+          <p>All sites using SSL certificates ensure that the site supports three important features at once: </p>
+          <ul>
+            <li>Confidentiality </li>
+            <li>Integrity</li>
+            <li>Identification</li>
+          </ul>
+
+          <p>SSL certificates are issued by a <strong>publicly trusted certificate authority (CA)</strong>. CA are
+            industry-trusted
+            organizations that issue Internet certificates. They are responsible for the quality of service and provide
+            guarantees of the reliability of the SSL certificate. If the user suffers due to the vulnerability of the
+            certificate, he will be paid monetary compensation. </p>
+
+          <p>Each browser contains a list of trusted CAs. Sites with SSL certificates from this list are considered safe
+            for the user. </p>
+
+          <img id="screenshot_trusted_CA" class="img-fluid" src="/img/posts/post_1-SSL-certificates.png"
+            alt="!!!!!!!!!!!!!!!!!!!!!!!!">
+          <blockquote class="caption text-muted">
+            <label for="screenshot_trusted_CA">List of trusted CAs in Chrome browser </label>
+            <div>(section Settings - Privacy and security - security - manage certificates - system roots)</div>
+          </blockquote>
+
+          <p>If the site's SSL certificate was issued by a valid certification center, the user's browser recognizes it
+            as trusted (authentication) and encrypts its data using the public key. Even if an attacker intercepts the
+            information transmitted by the user (for example, credit card details for paying for an order), he will not
+            be able to read it, since he does not have a private key to decrypt the data. </p>
+
+          <h2 class="section-heading">Let's summarize</h2>
+
+          <p>Safe and efficient transmission of data over open communication channels is a critical component of a
+            modern IT system, and SSL provides this security. </p>
+
+          <p>Placeholder text by
+            <a href="#">Anton Talalaev</a>. Header image by
+            <a href="#">Canva</a>.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Anton Talalaev 2020</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</html>
