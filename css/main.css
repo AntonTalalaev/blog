@@ -123,3 +123,8 @@ code {
 .code-left-shift-3 {
   padding-left: 45px;
 }
+
+.post_7 img {
+  min-width: 100px;
+  max-height: 120px;
+}
