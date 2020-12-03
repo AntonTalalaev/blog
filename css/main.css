@@ -1,49 +1,30 @@
-/* My styles */
-
-
-
-/* 
-            Notes: 
-
-            1. Compress used images to 300px 
-            2. Set alt to each image 
-            3. Set correct title for each page 
-            4. Set name="description" and name="author" in meta for each page
-            5. Add full About me and my full-full resume on the page About me
-            6. Need to correct fotter of each article:
-            <p>Placeholder text by
-              <a href="#">Anton Talalaev</a>. Header image by
-              <a href="#">Canva(need full name of the servise) (link to the image/author)</a>.
-            </p>
-            7. change all header images
-            8. need main img for post_3 (password_management)
-            9. add <meta name="description" content=""> and <meta name="author" content=""> for each page
-            10. add favicon:     <!-- <link rel="shortcut icon" href="favicon.png"> -->
-
- */
-
+/***************************** My styles */
 
 
 
 /* Page Index */
+
 .index-site-heading {
   padding: 330px 0 !important;
 }
- 
+
+/* Page About */
+
+.about-page p {
+  text-align: justify;
+}
 
 /* Page Posts */
 
 /* Header */
 
 .post-main-heading {
-    padding: 140px 0 50px 0 !important;
+  padding: 140px 0 50px 0 !important;
 }
 
 .post-main-heading h1 {
-    text-align: center;
+  text-align: center;
 }
-
-
 
 /* Post main */
 
@@ -71,7 +52,6 @@
   font-weight: 400;
 }
 
-
 /* Posts Img */
 
 .img-container {
@@ -82,8 +62,6 @@
   width: 100%;
 }
 
-
-
 /* Posts Code */
 
 .code-container {
@@ -93,7 +71,6 @@
   font-size: 80%;
   padding: 30px 20px 30px 20px;
   border: 5px #d4d4d4 double;
-
 }
 
 .code-container p {
@@ -121,7 +98,6 @@ code {
 .code-comment {
   color: #6a9955;
 }
-
 
 .code-left-shift-1 {
   padding-left: 15px;
