@@ -14,6 +14,19 @@
   text-align: justify;
 }
 
+
+
+/* Page Posts */
+.contact-page {
+  height: 400px;
+}
+.contact-page .img-author {
+  color: darkslategrey;
+  font-size: 80%;
+  opacity: 0.5;
+}
+
+
 /* Page Posts */
 
 /* Header */
