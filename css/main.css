@@ -2,6 +2,10 @@
 
 
 
+body p{
+  text-align: justify;
+}
+
 /* Page Index */
 
 .index-site-heading {
@@ -32,11 +36,11 @@
 /* Header */
 
 .post-main-heading {
-  padding: 140px 0 50px 0 !important;
+  padding: 250px 0 !important;
 }
-
 .post-main-heading h1 {
   text-align: center;
+  opacity: 0.7;
 }
 
 /* Post main */
@@ -69,6 +73,14 @@
 
 .img-container {
   margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.img-container-50 {
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  max-width: 50%;
 }
 
 .img-container img {
@@ -127,4 +139,14 @@ code {
 .post_7 img {
   min-width: 100px;
   max-height: 120px;
+}
+
+.post_7 {
+  text-align: justify;
+}
+
+.post_7 h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
 }
