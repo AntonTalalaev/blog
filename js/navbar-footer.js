@@ -19,7 +19,7 @@ document.body.insertAdjacentHTML('afterbegin',
             <a class="nav-link" href="./about.html">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./posts.html">Posts</a>
+            <a class="nav-link" href="./blog.html">Blog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./contact.html">Contact</a>
