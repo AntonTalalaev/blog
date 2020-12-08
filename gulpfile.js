@@ -7,7 +7,7 @@ const autoprefixer = require('autoprefixer');    // will convert css into browse
 const concat = require('gulp-concat');           // will concat files 
 const sourcemaps = require('gulp-sourcemaps');   // package to map source file and minimized
 const minifyInline = require('gulp-minify-inline');
-
+const imagemin = require('gulp-imagemin');
 
 
 // HTML tasks
@@ -35,25 +35,30 @@ function stylesTask() {
 }
 
 // images bg tasks 
-function imagesBgTask() {
-    return src('src/images/*')
+function imagesTask() {
+    return src([
+        'src/images/*.png',
+        'src/images/*.jpg',
+        'src/images/posts/*.png',
+        'src/images/posts/*.jpg'
+    ], { base: 'src/images/' })
+        .pipe(imagemin())
         .pipe(dest('dist/images/'));
 }
 
-// images posts tasks 
-function imagesPostsTask() {
-    return src('src/images/posts/*')
-        .pipe(dest('dist/images/posts/'));
+function imagesGIFTask() {
+    return src('src/images/*.gif')
+        .pipe(dest('dist/images/'));
 }
 
 // styles tasks 
 function vendorTask() {
     return src([
-        'src/vendor/bootstrap/css/*',
-        'src/vendor/bootstrap/js/*',
-        'src/vendor/fontawesome/css/*',
+        'src/vendor/bootstrap/css/*min*',
+        'src/vendor/bootstrap/js/*min*',
+        'src/vendor/fontawesome/css/*min*',
         'src/vendor/fontawesome/webfonts/*',
-        'src/vendor/jquery/*',
+        'src/vendor/jquery/*min*',
     ], { base: 'src/vendor/' })
         .pipe(dest('dist/vendor/'));
 }
@@ -62,10 +67,8 @@ function vendorTask() {
 exports.html = htmlTask;
 exports.scripts = scriptsTask;
 exports.styles = stylesTask;
-exports.imagesBg = imagesBgTask;
-exports.imagesPosts = imagesPostsTask;
+exports.images = series(imagesTask, imagesGIFTask);
+exports.imagesGIF = imagesGIFTask;
 exports.vendor = vendorTask;
-exports.default = series(parallel(htmlTask, scriptsTask, stylesTask, imagesBgTask, imagesPostsTask, vendorTask));
 
-
-
+exports.default = series(parallel(htmlTask, scriptsTask, stylesTask, vendorTask));
