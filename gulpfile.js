@@ -1,5 +1,15 @@
 const { src, dest, series, parallel } = require('gulp');
 
+// CSS 
+const postcss = require('gulp-postcss');         // run plugins
+const cssnano = require('cssnano');              // will minimize file
+const autoprefixer = require('autoprefixer');    // will convert css into browser specific css
+const concat = require('gulp-concat');           // will concat files 
+const sourcemaps = require('gulp-sourcemaps');   // package to map source file and minimized
+
+
+
+
 // HTML tasks
 function htmlTask() {
     return src('src/*.html')
@@ -15,6 +25,9 @@ function scriptsTask() {
 // styles tasks 
 function stylesTask() {
     return src('src/styles/*.css')
+        .pipe(sourcemaps.init())
+        .pipe(postcss([autoprefixer(), cssnano()]))  
+        .pipe(sourcemaps.write())                    
         .pipe(dest('dist/styles'));
 }
 
@@ -50,4 +63,6 @@ exports.imagesBg = imagesBgTask;
 exports.imagesPosts = imagesPostsTask;
 exports.vendor = vendorTask;
 exports.default = series(parallel(htmlTask, scriptsTask, stylesTask, imagesBgTask, imagesPostsTask, vendorTask));
+
+
 
