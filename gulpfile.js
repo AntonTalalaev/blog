@@ -71,4 +71,4 @@ exports.images = series(imagesTask, imagesGIFTask);
 exports.imagesGIF = imagesGIFTask;
 exports.vendor = vendorTask;
 
-exports.default = series(parallel(htmlTask, scriptsTask, stylesTask, vendorTask));
+exports.default = series(parallel(htmlTask, scriptsTask, stylesTask, vendorTask, imagesTask, imagesGIFTask));
