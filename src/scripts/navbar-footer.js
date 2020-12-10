@@ -30,7 +30,6 @@ document.body.insertAdjacentHTML('afterbegin',
   </nav>`
 );
 
-
 // Footer 
 document.body.insertAdjacentHTML('beforeend',
   `<hr>

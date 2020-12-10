@@ -1,11 +1,11 @@
 const { src, dest, series, parallel } = require('gulp');
 
 
-const postcss = require('gulp-postcss');         // run plugins
-const cssnano = require('cssnano');              // will minimize file
-const autoprefixer = require('autoprefixer');    // will convert css into browser specific css
-const concat = require('gulp-concat');           // will concat files 
-const sourcemaps = require('gulp-sourcemaps');   // package to map source file and minimized
+const postcss = require('gulp-postcss');
+const cssnano = require('cssnano');
+const autoprefixer = require('autoprefixer');
+const concat = require('gulp-concat');
+const sourcemaps = require('gulp-sourcemaps');
 const minifyInline = require('gulp-minify-inline');
 const imagemin = require('gulp-imagemin');
 
@@ -18,19 +18,29 @@ function htmlTask() {
 
 // scripts tasks 
 function scriptsTask() {
-    return src('src/scripts/*.js')
+    return src([
+        'src/scripts/*.js',
+        'src/vendor/jquery/jquery.js',
+        'src/vendor/bootstrap/js/bootstrap.bundle.js'
+    ])
         .pipe(sourcemaps.init())
         .pipe(minifyInline())
         .pipe(sourcemaps.write())
+        .pipe(concat('all.js'))
         .pipe(dest('dist/scripts'));
 }
 
 // styles tasks 
 function stylesTask() {
-    return src('src/styles/*.css')
+    return src([
+        'src/vendor/bootstrap/css/bootstrap.css',
+        'src/vendor/clean-blog/clean-blog.css',
+        'src/styles/main.css',
+    ])
         .pipe(sourcemaps.init())
         .pipe(postcss([autoprefixer(), cssnano()]))
         .pipe(sourcemaps.write())
+        .pipe(concat('all.css'))
         .pipe(dest('dist/styles'));
 }
 
@@ -46,22 +56,12 @@ function imagesTask() {
         .pipe(dest('dist/images/'));
 }
 
+// GIF tasks
 function imagesGIFTask() {
     return src('src/images/*.gif')
         .pipe(dest('dist/images/'));
 }
 
-// styles tasks 
-function vendorTask() {
-    return src([
-        'src/vendor/bootstrap/css/*min*',
-        'src/vendor/bootstrap/js/*min*',
-        'src/vendor/fontawesome/css/*min*',
-        'src/vendor/fontawesome/webfonts/*',
-        'src/vendor/jquery/*min*',
-    ], { base: 'src/vendor/' })
-        .pipe(dest('dist/vendor/'));
-}
 
 // to make tasks available in gulp command 
 exports.html = htmlTask;
@@ -69,6 +69,5 @@ exports.scripts = scriptsTask;
 exports.styles = stylesTask;
 exports.images = series(imagesTask, imagesGIFTask);
 exports.imagesGIF = imagesGIFTask;
-exports.vendor = vendorTask;
 
-exports.default = series(parallel(htmlTask, scriptsTask, stylesTask, vendorTask, imagesTask, imagesGIFTask));
+exports.default = series(parallel(htmlTask, scriptsTask, stylesTask, imagesTask, imagesGIFTask));
