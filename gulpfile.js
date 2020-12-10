@@ -8,6 +8,7 @@ const concat = require('gulp-concat');
 const sourcemaps = require('gulp-sourcemaps');
 const minifyInline = require('gulp-minify-inline');
 const imagemin = require('gulp-imagemin');
+const uglify = require('gulp-uglify');
 
 
 // HTML tasks
@@ -17,11 +18,22 @@ function htmlTask() {
 }
 
 // scripts tasks 
-function scriptsTask() {
+function scriptsTask1() {
     return src([
-        'src/scripts/*.js',
         'src/vendor/jquery/jquery.js',
         'src/vendor/bootstrap/js/bootstrap.bundle.js'
+    ])
+        .pipe(sourcemaps.init())
+        .pipe(uglify())
+        .pipe(sourcemaps.write())
+        .pipe(concat('all.js'))
+        .pipe(dest('dist/scripts'));
+}
+
+function scriptsTask2() {
+    return src([
+        'src/scripts/*.js',
+        'dist/scripts/all.js',
     ])
         .pipe(sourcemaps.init())
         .pipe(minifyInline())
@@ -65,9 +77,9 @@ function imagesGIFTask() {
 
 // to make tasks available in gulp command 
 exports.html = htmlTask;
-exports.scripts = scriptsTask;
+exports.scripts = series(scriptsTask1, scriptsTask2);
 exports.styles = stylesTask;
 exports.images = series(imagesTask, imagesGIFTask);
 exports.imagesGIF = imagesGIFTask;
 
-exports.default = series(parallel(htmlTask, scriptsTask, stylesTask, imagesTask, imagesGIFTask));
+exports.default = series(parallel(htmlTask, stylesTask, imagesTask, imagesGIFTask), scriptsTask1, scriptsTask2);

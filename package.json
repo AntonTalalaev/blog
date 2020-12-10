@@ -26,6 +26,7 @@
     "gulp-minify-inline": "^1.1.0",
     "gulp-postcss": "^9.0.0",
     "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
     "postcss": "^8.1.14"
   }
 }
